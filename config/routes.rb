@@ -8,5 +8,7 @@ Rails.application.routes.draw do
   get 'posts/edit/:id', to: 'posts#edit'
   post 'posts/update/:id', to: 'posts#update'
 
+  post 'comments/create/:post_id', to: 'comments#create', constraints: { post_id: /\d+/ }
+  post 'comments/create/:post_id/replies/:parent_id', to: 'comments#create', constraints: { post_id: /\d+/, parent_id: /\d+/ }
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end
